@@ -6,6 +6,9 @@ import './MapDisplay.css'
 import "maplibre-gl/dist/maplibre-gl.css";
 import { MapProvider } from 'react-map-gl';
 
+
+var baseUrl = "https://api.maptiler.com/maps/4a03b449-9034-4621-a191-9d748a7a96f1/style.json?key="
+
 function MapDisplay() {
   var sw = new maplibregl.LngLat(100.531233507, 13.7341619786);
   var ne = new maplibregl.LngLat(100.5350130035, 13.7379234343);
@@ -34,7 +37,7 @@ function MapDisplay() {
         maxZoom='20'
         maxBounds={llb}
         style={{width: '100vw', height: '100%'}}
-        mapStyle="https://api.maptiler.com/maps/4a03b449-9034-4621-a191-9d748a7a96f1/style.json?key=25qBairJjw1gb4U7DB8r"
+        mapStyle={baseUrl + import.meta.env.VITE_API_KEY}
       >
         <NavigationControl />
         {markers.map(i => {
